@@ -64,30 +64,15 @@
         /** 一覧ページを表示 */
         public function index() {
             // echo 'indexが呼ばれました';
-            $message = 'test';
-            $nickname = 'Eriko';
+            // $message = 'test';
 
-            $row = array('name' => 'Eriko','message' => 'test');
-            $user_posts[] = $row;
-            $row = array('name' => 'Shinya','message' => 'おっす');
-            $user_posts[] = $row;
-            $row = array('name' => 'Maiko','message' => 'Hello');
-            $user_posts[] = $row;
-
-            $this->view_options= compact('user_posts');
-
-            //上の処理と同じこと
-            $this->view_options['message'] = $message;
-            $this->view_options['nickname'] = $nickname;
-
-
+            // $this->view_options= compact('message');
             $this->display();
         }
 
         /** 詳細ページを表示 */
         public function show($id) {
             $this->action='show';
-            
             $this->display();
           // 処理
             echo 'showが呼ばれました';

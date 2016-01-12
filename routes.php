@@ -5,10 +5,10 @@
     $resource = $params[0];
     $action = $params[1];
 
-    var_dump($_GET['url']);
-    var_dump($resource);
+    //var_dump($_GET['url']);
+    //var_dump($resource);
 
-    var_dump($action);
+    //var_dump($action);
 
     //$action = $_GET['action'];
     
