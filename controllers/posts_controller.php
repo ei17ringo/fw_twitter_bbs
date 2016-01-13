@@ -92,6 +92,13 @@
 
         /** 詳細ページを表示 */
         public function show($id) {
+
+            //HW: 下記の処理を使って、show.phpにid=1の記事を表示してきましょう
+            $id = 1;
+            $user_post = $this->Post->view($id);
+
+            $this->view_options= compact('user_post');
+
             $this->action='show';
             
             $this->display();
