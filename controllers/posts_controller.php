@@ -2,8 +2,9 @@
 
     require('models/'.changesingular($resource).'.php');
 
+    //$post = new Post();
     $posts = new PostsController();
-    $post = new Post();
+    
 
     switch ($action) {
         case 'index':
@@ -52,27 +53,32 @@
         private $resource = '';
         private $action = '';
         private $view_options = '';
+        private $Post = '';
 
         // コンストラクタ
         public function __construct () {
           // 初期化処理
+            $post = new Post();
             $this->resource = 'posts';
             $this->action = 'index';
             $this->view_options = array();
+            $this->Post = $post;
         }
 
         /** 一覧ページを表示 */
         public function index() {
             // echo 'indexが呼ばれました';
-            $message = 'test';
-            $nickname = 'Eriko';
+            // $message = 'test';
+            // $nickname = 'Eriko';
 
-            $row = array('name' => 'Eriko','message' => 'test');
-            $user_posts[] = $row;
-            $row = array('name' => 'Shinya','message' => 'おっす');
-            $user_posts[] = $row;
-            $row = array('name' => 'Maiko','message' => 'Hello');
-            $user_posts[] = $row;
+            // $row = array('name' => 'Eriko','message' => 'test');
+            // $user_posts[] = $row;
+            // $row = array('name' => 'Shinya','message' => 'おっす');
+            // $user_posts[] = $row;
+            // $row = array('name' => 'Maiko','message' => 'Hello');
+            // $user_posts[] = $row;
+
+            $user_posts = $this->Post->findAll();
 
             $this->view_options= compact('user_posts');
 

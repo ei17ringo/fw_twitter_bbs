@@ -1,12 +1,30 @@
 <?php
+    
     class Post {
         // プロパティ
-        private $hoge = '';
-        private $fuga = '';
+        private $dbconnect = '';
 
         // コンストラクタ
         public function __construct () {
+            //// +++ DB接続 +++ ////
+            require('/var/www/html/fw_twitter_bbs/dbconnect.php');
+
           // 初期化処理
+            $this->dbconnect = $db;
+        }
+
+        //追加
+        public function findAll(){
+            $return = array();
+            $sql = 'select * from `posts`;';
+            $results = mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect));
+        
+             while ($row = mysqli_fetch_assoc($results)) {
+
+                $return[] = $row;
+             }
+
+             return $return;
         }
 
         /** Controllerのアクションメソッドから呼び出される */
