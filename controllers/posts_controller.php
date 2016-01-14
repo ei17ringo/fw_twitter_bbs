@@ -11,7 +11,10 @@
             $posts->index();
             break;
         case 'show':
-            $posts->show(1);
+            $posts->show($id);
+            break;
+        case 'create':
+            $posts->create();
             break;
         case 'edit':
             $posts->edit(1);
@@ -54,6 +57,7 @@
         private $action = '';
         private $view_options = '';
         private $Post = '';
+        private $id = -1;
 
         // コンストラクタ
         public function __construct () {
@@ -63,6 +67,7 @@
             $this->action = 'index';
             $this->view_options = array();
             $this->Post = $post;
+            //$this->id = $id;
         }
 
         /** 一覧ページを表示 */
@@ -94,16 +99,24 @@
         public function show($id) {
 
             //HW: 下記の処理を使って、show.phpにid=1の記事を表示してきましょう
-            $id = 1;
+            //$id = 1;
             $user_post = $this->Post->view($id);
 
             $this->view_options= compact('user_post');
 
             $this->action='show';
+            $this->id = $id;
             
             $this->display();
           // 処理
             echo 'showが呼ばれました';
+        }
+
+        //データの追加
+        public function create(){
+
+            //insert メソッドの呼び出し
+            $this->Post->insert();
         }
 
         /** 編集ページを表示 */

@@ -34,6 +34,15 @@
         }
 
         /** Controllerのアクションメソッドから呼び出される */
+        public function insert(){
+
+            //posts テーブルにデータを追加するinsert文を記述し
+            //実行 member_id = 1 を指定して下さい
+            
+
+        }
+
+        /** Controllerのアクションメソッドから呼び出される */
         public function update($value) {
             // DBアクセス処理
         }
