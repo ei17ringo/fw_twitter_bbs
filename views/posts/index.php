@@ -1,6 +1,6 @@
 <div id="content">
 		<div style="text-align: right"><a href="#">ログアウト</a></div>
-		<form action="" method="post">
+		<form action="create" method="post">
 			<dl>
 				<dt>◯◯さん、メッセージをどうぞ</dt>
 				<dd>

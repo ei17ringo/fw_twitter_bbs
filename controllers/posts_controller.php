@@ -115,8 +115,12 @@
         //データの追加
         public function create(){
 
+            echo 'createが呼ばれました';
+
+            var_dump($_POST);
             //insert メソッドの呼び出し
-            $this->Post->insert();
+            $this->Post->insert($_POST);
+            
         }
 
         /** 編集ページを表示 */

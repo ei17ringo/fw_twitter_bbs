@@ -30,15 +30,28 @@
         /** Controllerのアクションメソッドから呼び出される */
         public function view($value) {
             // DBアクセス処理
-            echo 'modelのviewだよ';
+            $return = array();
+            $sql = 'select * from `posts` where　`id` = '.$value.' ;';
+            $results = mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect));
+        
+             while ($row = mysqli_fetch_assoc($results)) {
+
+                $return[] = $row;
+             }
+
+             return $return;
         }
 
         /** Controllerのアクションメソッドから呼び出される */
-        public function insert(){
+        public function insert($value){
 
             //posts テーブルにデータを追加するinsert文を記述し
             //実行 member_id = 1 を指定して下さい
-            
+
+            $sql = "INSERT INTO `posts`(`id`, `message`, `member_id`, `reply_post_id`, `created`, `modified`) ";
+            $sql .= "VALUES (null,'".$value['message']."',1,null,now(),now());";
+
+            $results = mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect));
 
         }
 
