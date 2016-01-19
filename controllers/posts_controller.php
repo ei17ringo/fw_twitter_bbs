@@ -20,7 +20,7 @@
             $posts->edit(1);
             break;
         case 'destroy':
-            $posts->destroy(1);
+            $posts->destroy($id);
             break;
         case 'view':
             $post->view(1);
@@ -115,11 +115,13 @@
         //データの追加
         public function create(){
 
-            echo 'createが呼ばれました';
+            //echo 'createが呼ばれました';
 
-            var_dump($_POST);
+            //var_dump($_POST);
             //insert メソッドの呼び出し
             $this->Post->insert($_POST);
+
+            header('Location:index');
             
         }
 
@@ -132,7 +134,15 @@
         /** 削除 */
         public function destroy($id) {
           // 処理
-            echo 'destroyが呼ばれました';
+            //echo 'destroyが呼ばれました';
+            //var_dump($id);
+
+
+            $this->Post->delete($id);
+
+            //一覧画面にリダイレクト
+            header('Location:../index');
+
         }
 
         private function display(){

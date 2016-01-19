@@ -16,7 +16,7 @@
         //追加
         public function findAll(){
             $return = array();
-            $sql = 'select * from `posts`;';
+            $sql = 'select * from `posts` WHERE `delete_flag` = 0;';
             $results = mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect));
         
              while ($row = mysqli_fetch_assoc($results)) {
@@ -31,7 +31,7 @@
         public function view($value) {
             // DBアクセス処理
             $return = array();
-            $sql = 'select * from `posts` where　`id` = '.$value.' ;';
+            $sql = 'select * from `posts` where `id` = '.$value.' ;';
             $results = mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect));
         
              while ($row = mysqli_fetch_assoc($results)) {
@@ -61,8 +61,13 @@
         }
 
         /** Controllerのアクションメソッドから呼び出される */
-        public function delete($value) {
+        public function delete($id) {
             // DBアクセス処理
+            $sql ='UPDATE `posts` SET `delete_flag`=1,`modified`=now() WHERE `id` = '.$id;
+            //var_dump($sql);
+            $results = mysqli_query($this->dbconnect,$sql) or die(mysqli_error($this->dbconnect));
+
+
         }
     }
 ?>
